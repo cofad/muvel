@@ -45,6 +45,8 @@ async function setMapClickHandler() {
 
     // Update city based on user selection
     setCityText("Loading...");
+    artists = [{ name: "Searching for city..." }];
+    updateArtistList();
     await setCityFromLatLng(latitude, longitude);
     setCityText(city);
 
