@@ -1,0 +1,56 @@
+.city__header,
+.artistst__header {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.body {
+  margin: 0;
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 350px;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 1.5rem 1rem 1.5rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.title__text {
+  margin: 0;
+  font-family: "Black Ops One", cursive;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.artists,
+.songs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.artists__list,
+.songs__list {
+  overflow-y: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.map {
+  height: 100vh;
+  flex-grow: 1;
+  cursor: crosshair;
+}
