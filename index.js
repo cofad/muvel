@@ -64,7 +64,7 @@ async function setMapClickHandler() {
  */
 async function setCityFromLatLng(latitude, longitude) {
   response = await fetch(
-    `http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&location=${longitude},${latitude}`
+    `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&location=${longitude},${latitude}`
   );
 
   reverseGeocodeData = await response.json();
@@ -123,7 +123,7 @@ async function buildArtistArray(city) {
  */
 async function getArtists(queryParameter, queryArgument) {
   baseUrl =
-    "http://musicbrainz.org/ws/2/artist/?fmt=json&limit=100&offset=0&query=";
+    "https://musicbrainz.org/ws/2/artist/?fmt=json&limit=100&offset=0&query=";
 
   let response = await fetch(baseUrl + queryParameter + ":" + queryArgument);
 
