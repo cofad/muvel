@@ -1,23 +1,28 @@
 .city__header,
-.artistst__header {
+.artists__header {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 }
 
 .body {
   margin: 0;
-  display: flex;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-areas:
+    "main   map "
+    "footer map";
+  grid-template-rows: minmax(0px, 1fr) auto;
+  grid-template-columns: 300px 1fr;
 }
 
 .main {
+  grid-area: main;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  width: 350px;
-  height: 100vh;
   box-sizing: border-box;
-  padding: 0 1.5rem 1rem 1.5rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
 }
 
 .header {
@@ -31,26 +36,38 @@
   font-weight: 400;
 }
 
-.artists,
-.songs {
+.artists {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.artists__list,
-.songs__list {
+.artists__list {
   overflow-y: auto;
+  margin: 0;
 }
 
 .footer {
+  grid-area: footer;
   display: flex;
   justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
 .map {
-  height: 100vh;
-  flex-grow: 1;
+  grid-area: map;
   cursor: crosshair;
+}
+
+@media (max-width: 800px) {
+  .body {
+    grid-template-areas:
+      "main "
+      "map"
+      "footer";
+
+    grid-template-rows: minmax(0px, 3fr) minmax(0px, 2fr) auto;
+    grid-template-columns: 1fr;
+  }
 }
