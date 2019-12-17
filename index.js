@@ -7,8 +7,19 @@ let artists = [];
 let songs = [];
 
 async function main() {
+  goFullScreen();
   initializeMap();
   setMapClickHandler();
+}
+
+/** Make the address disappear on mobile */
+function goFullScreen() {
+  window.addEventListener("load", function() {
+    setTimeout(function() {
+      // This hides the address bar:
+      window.scrollTo(0, 1);
+    }, 0);
+  });
 }
 
 /** Initialize the map and sets a marker using default lat/long */
