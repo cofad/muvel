@@ -42,15 +42,15 @@ function getUserLocation() {
             "An error has occured while retrieving location",
             error
           );
-          let latitude = 39;
-          let longitude = -97;
+          latitude = 39;
+          longitude = -97;
           reject();
         }
       );
     } else {
       console.log("geolocation is not enabled on this browser");
-      let latitude = 39;
-      let longitude = -97;
+      latitude = 39;
+      longitude = -97;
       reject();
     }
   });
