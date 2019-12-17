@@ -5,10 +5,55 @@ let marker;
 let city;
 let artists = [];
 let songs = [];
+let userLocated = false;
 
 async function main() {
+  await getUserLocation();
+
+  if (userLocated) {
+    await loadCity();
+    await loadArtists();
+  }
+
   initializeMap();
   setMapClickHandler();
+}
+
+/** Gets the user latitude and longitude */
+function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    if ("geolocation" in navigator) {
+      // check if geolocation is supported/enabled on current browser
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log(
+            "latitude",
+            position.coords.latitude,
+            "longitude",
+            position.coords.longitude
+          );
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
+          userLocated = true;
+          resolve();
+        },
+        error => {
+          console.error(
+            "An error has occured while retrieving location",
+            error
+          );
+          let latitude = 39;
+          let longitude = -97;
+          reject();
+        }
+      );
+    } else {
+      console.log("geolocation is not enabled on this browser");
+      let latitude = 39;
+      let longitude = -97;
+      reject();
+    }
+  });
 }
 
 /** Initialize the map and sets a marker using default lat/long */
@@ -43,19 +88,26 @@ async function setMapClickHandler() {
       map.setView([latitude, longitude]);
     }
 
-    // Update city based on user selection
-    setCityText("Loading...");
-    artists = [{ name: "Searching for city..." }];
-    updateArtistList();
-    await setCityFromLatLng(latitude, longitude);
-    setCityText(city);
-
-    // Update artists based selected city
-    artists = [{ name: "Loading..." }];
-    updateArtistList();
-    await buildArtistArray(city);
-    updateArtistList(artists);
+    await loadCity();
+    await loadArtists();
   });
+}
+
+/** Gets the city and updates the DOM */
+async function loadCity() {
+  setCityText("Loading...");
+  artists = [{ name: "Searching for city..." }];
+  updateArtistList();
+  await setCityFromLatLng(latitude, longitude);
+  setCityText(city);
+}
+
+/** Gets the artists and updates the DOM */
+async function loadArtists() {
+  artists = [{ name: "Loading..." }];
+  updateArtistList();
+  await buildArtistArray(city);
+  updateArtistList(artists);
 }
 
 /**
