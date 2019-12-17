@@ -88,7 +88,26 @@
     grid-template-columns: 30% 70%;
   }
 
+  .header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .city__text {
+    margin: 0;
+  }
+
+  .artists {
+    margin-left: 1rem;
+  }
+
+  .artists__header {
+    margin-left: 0;
+  }
+
   .artists__list {
     padding-bottom: 1rem;
+    padding-left: 0;
   }
 }
