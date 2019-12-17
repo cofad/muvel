@@ -158,6 +158,10 @@ async function buildArtistArray(city) {
     additionalArtists = await getArtists("endarea", city);
     artists = [...artists, ...additionalArtists];
 
+    artists.sort((a, b) =>
+      a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1
+    );
+
     if (artists.length === 0) {
       artists = [{ name: "No artists found" }];
     }
