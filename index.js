@@ -21,7 +21,7 @@ async function main() {
 
 /** Gets the user latitude and longitude */
 function getUserLocation() {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     if ("geolocation" in navigator) {
       // check if geolocation is supported/enabled on current browser
       navigator.geolocation.getCurrentPosition(
