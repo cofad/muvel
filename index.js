@@ -155,6 +155,7 @@ function updateArtistList() {
     let listItem = document.createElement("LI");
     let textNode = document.createTextNode(artist.name);
     listItem.appendChild(textNode);
+    listItem.classList.add("artists__list-item");
     artistList.appendChild(listItem);
   });
 }

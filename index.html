@@ -14,6 +14,11 @@
       Secure
     />
 
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Leaflet.js -->
     <link
       rel="stylesheet"
@@ -28,21 +33,21 @@
   </head>
 
   <body class="body">
-    <main class="main">
-      <header class="header">
-        <h1 class="title__text">Muvel</h1>
-        <span><strong>Mu</strong>sic for Trav<strong>el</strong></span>
-      </header>
+    <header class="header">
+      <h1 class="title__text">Muvel</h1>
+      <span><strong>Mu</strong>sic for Trav<strong>el</strong></span>
+    </header>
 
+    <main class="main">
       <section class="city">
         <h2 class="city__header">City</h2>
-        <p id="city">Select a location on the map.</p>
+        <p class="city__text" id="city">Select a location on the map</p>
       </section>
 
       <section class="artists">
         <h2 class="artists__header">Artists</h2>
         <ul id="artists__list" class="artists__list">
-          <li>No city selected.</li>
+          <li class="artists__list-item">No city selected</li>
         </ul>
       </section>
     </main>

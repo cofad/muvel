@@ -1,19 +1,17 @@
-.city__header,
-.artists__header {
-  font-size: 1.25rem;
-  margin: 0.5rem;
-}
-
 .body {
   margin: 0;
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-areas:
+    "header map"
     "main   map "
     "footer map";
-  grid-template-rows: minmax(0px, 1fr) auto;
+  grid-template-rows: auto minmax(0px, 1fr) auto;
   grid-template-columns: 300px 1fr;
+  background-color: #0d0221;
+  color: #86e2d5;
+  font-family: "Open Sans", sans-serif;
 }
 
 .main {
@@ -22,7 +20,6 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 1rem 1.5rem 1rem 1.5rem;
 }
 
 .header {
@@ -36,6 +33,23 @@
   font-weight: 400;
 }
 
+.city {
+  margin-left: 1rem;
+}
+
+.city__header {
+  font-size: 1.25rem;
+}
+
+.city__text {
+  margin-left: 1rem;
+}
+
+.artists__header {
+  font-size: 1.25rem;
+  margin-left: 1rem;
+}
+
 .artists {
   flex: 1;
   display: flex;
@@ -46,13 +60,19 @@
 .artists__list {
   overflow-y: auto;
   margin: 0;
+  padding-right: 1rem;
+  padding-left: 2.125rem;
+}
+
+.artists__list-item {
+  list-style: none;
 }
 
 .footer {
   grid-area: footer;
   display: flex;
   justify-content: center;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 }
 
 .map {
