@@ -5,24 +5,18 @@
   display: grid;
   grid-template-areas:
     "header map"
-    "main   map "
+    "city map"
+    "artists map"
     "footer map";
-  grid-template-rows: auto minmax(0px, 1fr) auto;
+  grid-template-rows: auto auto minmax(0px, 1fr) auto;
   grid-template-columns: 300px 1fr;
   background-color: #0d0221;
   color: #86e2d5;
   font-family: "Open Sans", sans-serif;
 }
 
-.main {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
 .header {
+  grid-area: header;
   text-align: center;
 }
 
@@ -34,7 +28,8 @@
 }
 
 .city {
-  margin-left: 1rem;
+  grid-area: city;
+  margin: 0 1rem;
 }
 
 .city__header {
@@ -45,16 +40,17 @@
   margin-left: 1rem;
 }
 
-.artists__header {
-  font-size: 1.25rem;
-  margin-left: 1rem;
-}
-
 .artists {
+  grid-area: artists;
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.artists__header {
+  font-size: 1.25rem;
+  margin-left: 1rem;
 }
 
 .artists__list {
@@ -83,11 +79,16 @@
 @media (max-width: 800px) {
   .body {
     grid-template-areas:
-      "main "
-      "map"
-      "footer";
+      "header   header"
+      "city  artists"
+      "map      map"
+      "footer   footer";
 
-    grid-template-rows: minmax(0px, 3fr) minmax(0px, 2fr) auto;
-    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0px, 1fr) minmax(0px, 1fr) auto;
+    grid-template-columns: 30% 70%;
+  }
+
+  .artists__list {
+    padding-bottom: 1rem;
   }
 }
