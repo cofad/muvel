@@ -20,6 +20,10 @@
   text-align: center;
 }
 
+.header__bold {
+  font-weight: 800;
+}
+
 .title__text {
   margin: 0;
   font-family: "Black Ops One", cursive;
