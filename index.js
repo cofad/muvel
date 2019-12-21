@@ -1,5 +1,8 @@
-let latitude = 39;
-let longitude = -97;
+const DEFAULT_LATITUDE = 39;
+const DEFAULT_LONGITUDE = -97;
+
+let latitude = null;
+let longitude = null;
 let map;
 let marker;
 let city;
@@ -21,15 +24,15 @@ async function main() {
 
 /** Gets the user latitude and longitude */
 function getUserLocation() {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
       // check if geolocation is supported/enabled on current browser
       navigator.geolocation.getCurrentPosition(
         position => {
           console.log(
-            "latitude",
+            "User latitude =",
             position.coords.latitude,
-            "longitude",
+            "and longitude =",
             position.coords.longitude
           );
           latitude = position.coords.latitude;
@@ -38,10 +41,14 @@ function getUserLocation() {
           resolve();
         },
         error => {
-          console.error(
-            "An error has occured while retrieving location",
-            error
-          );
+          if (error.code === 1) {
+            console.log("User has denied location retrieval");
+          } else {
+            console.error(
+              "An error has occured while retrieving location",
+              error
+            );
+          }
           resolve();
         }
       );
@@ -56,7 +63,7 @@ function getUserLocation() {
 function initializeMap() {
   map = L.map("map");
 
-  map.setView([latitude, longitude], 4);
+  map.setView([DEFAULT_LATITUDE, DEFAULT_LONGITUDE], 4);
 
   L.tileLayer(
     "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
@@ -69,6 +76,10 @@ function initializeMap() {
         "pk.eyJ1Ijoid3J3MTAzIiwiYSI6ImNrMmpxMDh1bDFlcTQzbXBoNmYwYnA5MHUifQ.CB3N7Hwbg555SGnR0XUzcQ"
     }
   ).addTo(map);
+
+  if (userLocated) {
+    marker = L.marker([latitude, longitude]).addTo(map);
+  }
 }
 
 /** Update map marker and get city and artists when map is clicked */
